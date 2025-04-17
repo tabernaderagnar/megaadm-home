@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MegaADM - Portal de Documentos e Formulários</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variáveis CSS */
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #2563eb;
+            --primary-light: #93c5fd;
+            --secondary-color: #10b981;
+            --secondary-dark: #059669;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --gray-color: #64748b;
+            --light-gray: #e2e8f0;
+            --border-radius: 10px;
+            --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+        
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- O conteúdo do corpo será adicionado nas próximas partes -->
+</body>
+</html>
+<header class="header">
+    <div class="container">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-file-contract"></i>
+                <span>Mega<strong>ADM</strong></span>
+            </a>
+            
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="#home" class="nav-link active">Início</a></li>
+                <li class="nav-item"><a href="#categorias" class="nav-link">Categorias</a></li>
+                <li class="nav-item"><a href="#recursos" class="nav-link">Recursos</a></li>
+                <li class="nav-item"><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar documentos...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<style>
+    /* Estilos do Header e Navegação */
+    .header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 1rem 0;
+    }
+    
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--dark-color);
+    }
+    
+    .logo i {
+        color: var(--primary-color);
+        margin-right: 0.5rem;
+        font-size: 2rem;
+    }
+    
+    .logo strong {
+        color: var(--primary-color);
+    }
+    
+    .nav-menu {
+        display: flex;
+        align-items: center;
+    }
+    
+    .nav-item {
+        margin-left: 2rem;
+    }
+    
+    .nav-link {
+        color: var(--dark-color);
+        font-weight: 600;
+        padding: 0.5rem 0;
+        position: relative;
+        transition: var(--transition);
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 3px;
+        background-color: var(--primary-color);
+        bottom: 0;
+        left: 0;
+        transition: var(--transition);
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        color: var(--primary-color);
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 100%;
+    }
+    
+    .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: var(--light-color);
+        border-radius: 50px;
+        padding: 0.5rem 1rem;
+        margin-left: 2rem;
+    }
+    
+    .search-bar input {
+        background: none;
+        border: none;
+        outline: none;
+        padding: 0.3rem;
+        width: 200px;
+    }
+    
+    .search-bar button {
+        background: none;
+        border: none;
+        color: var(--primary-color);
+        cursor: pointer;
+    }
+    
+    .nav-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--dark-color);
+    }
+    
+    @media screen and (max-width: 992px) {
+        .nav-menu {
+            position: fixed;
+            top: 70px;
+            left: -100%;
+            flex-direction: column;
+            background-color: white;
+            width: 100%;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            padding: 2rem 0;
+        }
+        
+        .nav-menu.active {
+            left: 0;
+        }
+        
+        .nav-item {
+            margin: 1.5rem 0;
+        }
+        
+        .nav-toggle {
+            display: block;
+        }
+        
+        .search-bar {
+            display: none;
+        }
+    }
+</style>
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Sua Biblioteca Digital de Documentos</h1>
+            <p>Acesse, preencha e imprima diversos modelos de documentos e formulários. Economize tempo e simplifique processos burocráticos.</p>
+            <div class="hero-actions">
+                <a href="#categorias" class="btn">Explorar Documentos</a>
+                <a href="#recursos" class="btn btn-outline">Como Funciona</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-text">Documentos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50k+</span>
+                    <span class="stat-text">Downloads</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-text">Satisfação</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="/api/placeholder/600/400" alt="Documentos organizados">
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Estilos da Seção Hero */
+    .hero {
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+        color: white;
+        padding: 6rem 0;
+        overflow: hidden;
+    }
+    
+    .hero .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+    
+    .hero-actions {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+    
+    .hero-stats {
+        display: flex;
+        gap: 2rem;
+    }
+    
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: white;
+    }
+    
+    .stat-text {
+        font-size: 1rem;
+        opacity: 0.8;
+    }
+    
+    .hero-image {
+        position: relative;
+        text-align: right;
+    }
+    
+    .hero-image img {
+        max-width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        border: 5px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    @media screen and (max-width: 992px) {
+        .hero .container {
+            grid-template-columns: 1fr;
+        }
+        
+        .hero-content {
+            text-align: center;
+        }
+        
+        .hero-actions {
+            justify-content: center;
+        }
+        
+        .hero-stats {
+            justify-content: center;
+        }
+        
+        .hero-image {
+            display: none;
+        }
+    }
+</style>
+<section class="categories" id="categorias">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">Documentos Organizados</span>
+            <h2 class="section-title">Categorias de Documentos</h2>
+            <p class="section-description">Encontre o documento que você precisa organizado por categorias</p>
+        </div>
+        
+        <div class="categories-grid">
+            <!-- Categoria 1 -->
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="category-content">
+                    <h3>Declarações Residenciais</h3>
+                    <p>Documentos relacionados à comprovação de residência e moradia para diferentes finalidades.</p>
+                    <ul class="doc-list">
+                        <li><a href="https://megaadm.com/autodeclaracaoderesidencianv1/"><i class="fas fa-file-alt"></i> Declaração Simples (NV1)</a></li>
+                        <li><a href="https://megaadm.com/autodeclaracaoderesidencianv2/"><i class="fas fa-file-alt"></i> Declaração Detalhada (NV2)</a></li>
+                        <li><a href="https://megaadm.com/autodeclaracaoderesidencianv3/"><i class="fas fa-file-alt"></i> Declaração Completa (NV3)</a></li>
+                    </ul>
+                </div>
+                <div class="category-footer">
+                    <a href="#" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Categoria 2 -->
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="category-content">
+                    <h3>Contratos de Compra e Venda</h3>
+                    <p>Modelos de contratos para diferentes tipos de negociações e transações comerciais.</p>
+                    <ul class="doc-list">
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Contrato Básico (NV1)</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Contrato Intermediário (NV2)</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Contrato Avançado (NV3)</a></li>
+                    </ul>
+                </div>
+                <div class="category-footer">
+                    <a href="#" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Categoria 3 -->
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <div class="category-content">
+                    <h3>Contratos de Aluguel</h3>
+                    <p>Documentos para formalização de locação de imóveis residenciais e comerciais.</p>
+                    <ul class="doc-list">
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Locação Residencial (NV1)</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Locação Comercial (NV2)</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Locação Completa (NV3)</a></li>
+                    </ul>
+                </div>
+                <div class="category-footer">
+                    <a href="#" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Categoria 4 -->
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="category-content">
+                    <h3>Procurações</h3>
+                    <p>Modelos de procurações para representação legal em diferentes situações.</p>
+                    <ul class="doc-list">
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Procuração Simples (NV1)</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Procuração Específica (NV2)</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Procuração Completa (NV3)</a></li>
+                    </ul>
+                </div>
+                <div class="category-footer">
+                    <a href="#" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="categories-more">
+            <a href="#" class="btn btn-secondary">Ver Todas as Categorias</a>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Estilos da Seção de Categorias */
+    .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+    
+    .section-subtitle {
+        display: inline-block;
+        background-color: rgba(59, 130, 246, 0.1);
+        color: var(--primary-color);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        color: var(--dark-color);
+        margin-bottom: 1rem;
+    }
+    
+    .section-description {
+        color: var(--gray-color);
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .category-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--box-shadow);
+    }
+    
+    .category-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        background-color: rgba(59, 130, 246, 0.1);
+    }
+    
+    .category-icon i {
+        font-size: 3rem;
+        color: var(--primary-color);
+    }
+    
+    .category-content {
+        padding: 1.5rem;
+        flex: 1;
+    }
+    
+    .category-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--dark-color);
+    }
+    
+    .category-content p {
+        color: var(--gray-color);
+        margin-bottom: 1.5rem;
+    }
+    
+    .doc-list li {
+        margin-bottom: 1rem;
+    }
+    
+    .doc-list li a {
+        display: flex;
+        align-items: center;
+        color: var(--dark-color);
+        transition: var(--transition);
+    }
+    
+    .doc-list li a:hover {
+        color: var(--primary-color);
+    }
+    
+    .doc-list li a i {
+        margin-right: 0.5rem;
+        color: var(--primary-color);
+    }
+    
+    .category-footer {
+        padding: 1rem 1.5rem;
+        border-top: 1px solid var(--light-gray);
+    }
+    
+    .view-all {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+    
+    .view-all i {
+        margin-left: 0.5rem;
+        transition: var(--transition);
+    }
+    
+    .view-all:hover i {
+        transform: translateX(5px);
+    }
+    
+    .categories-more {
+        text-align: center;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .section-title {
+            font-size: 2rem;
+        }
+    }
+</style>
+<section class="features" id="recursos">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">Por Que Nos Escolher</span>
+            <h2 class="section-title">Recursos Exclusivos</h2>
+            <p class="section-description">Conheça as vantagens de utilizar o MegaADM para seus documentos</p>
+        </div>
+        
+        <div class="features-wrapper">
+            <div class="features-image">
+                <img src="/api/placeholder/500/600" alt="Recursos do MegaADM">
+            </div>
+            
+            <div class="features-content">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <div class="feature-info">
+                        <h3>Preenchimento Inteligente</h3>
+                        <p>Formulários interativos que permitem o preenchimento fácil e rápido dos seus documentos.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-info">
+                        <h3>Segurança Garantida</h3>
+                        <p>Seus dados são processados localmente em seu dispositivo, sem armazenamento em servidores.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <div class="feature-info">
+                        <h3>Impressão Otimizada</h3>
+                        <p>Documentos formatados para impressão profissional com margens e alinhamento perfeitos.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="feature-info">
+                        <h3>Diferentes Níveis</h3>
+                        <p>Escolha entre versões básicas, intermediárias ou avançadas do mesmo documento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Estilos da Seção de Recursos */
+    .features {
+        background-color: #f8fafc;
+    }
+    
+    .features-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+    
+    .features-image img {
+        max-width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+    }
+    
+    .feature-item {
+        display: flex;
+        margin-bottom: 2.5rem;
+    }
+    
+    .feature-icon {
+        flex-shrink: 0;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(59, 130, 246, 0.1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1.5rem;
+    }
+    
+    .feature-icon i {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+    }
+    
+    .feature-info h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: var(--dark-color);
+    }
+    
+    .feature-info p {
+        color: var(--gray-color);
+    }
+    
+    @media screen and (max-width: 992px) {
+        .features-wrapper {
+            grid-template-columns: 1fr;
+        }
+        
+        .features-image {
+            display: none;
+        }
+    }
+</style>
+<!-- Seção de Estatísticas -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="stat-number" data-count="500">0</div>
+                <div class="stat-title">Documentos Disponíveis</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number" data-count="50000">0</div>
+                <div class="stat-title">Usuários Satisfeitos</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <div class="stat-number" data-count="100000">0</div>
+                <div class="stat-title">Downloads Realizados</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="stat-number" data-count="98">0</div>
+                <div class="stat-percent">%</div>
+                <div class="stat-title">Índice de Satisfação</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Seção CTA (Call To Action) -->
+<section class="cta" id="contato">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Não encontrou o documento que precisa?</h2>
+            <p>Entre em contato conosco e solicite o documento específico para sua necessidade. Estamos sempre atualizando nossa biblioteca com novos modelos.</p>
+            <form class="cta-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Seu e-mail" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Descreva o documento que você precisa..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar Solicitação</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Estilos da Seção de Estatísticas */
+    .stats {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 5rem 0;
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+    }
+    
+    .stat-card {
+        text-align: center;
+        padding: 2rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-10px);
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .stat-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: white;
+    }
+    
+    .stat-number {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        display: inline-block;
+    }
+    
+    .stat-percent {
+        font-size: 2rem;
+        font-weight: 800;
+        display: inline-block;
+    }
+    
+    .stat-title {
+        font-size: 1.1rem;
+        opacity: 0.8;
+    }
+    
+    /* Estilos da Seção CTA */
+    .cta {
+        background: linear-gradient(135deg, var(--dark-color), #334155);
+        color: white;
+        padding: 5rem 0;
+    }
+    
+    .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .cta-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .cta-content p {
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+    
+    .cta-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        text-align: left;
+    }
+    
+    .form-group:nth-child(3) {
+        grid-column: span 2;
+    }
+    
+    .form-group:nth-child(4) {
+        grid-column: span 2;
+        text-align: center;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        border: none;
+        border-radius: var(--border-radius);
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        outline: none;
+        transition: var(--transition);
+    }
+    
+    .form-group textarea {
+        height: 150px;
+        resize: none;
+    }
+    
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .cta .btn {
+        margin-top: 1rem;
+        padding: 1rem 2rem;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .cta-form {
+            grid-template-columns: 1fr;
+        }
+        
+        .form-group:nth-child(3) {
+            grid-column: span 1;
+        }
+        
+        .form-group:nth-child(4) {
+            grid-column: span 1;
+        }
+    }
+</style>
+<!-- Footer -->
+<footer class="footer" id="sobre">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="index.html" class="footer-logo">
+                    <i class="fas fa-file-contract"></i>
+                    <span>Mega<strong>ADM</strong></span>
+                </a>
+                <p>O MegaADM é uma plataforma dedicada a facilitar o acesso a documentos e formulários essenciais para o dia a dia, eliminando burocracias e economizando seu tempo.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-angle-right"></i> Início</a></li>
+                    <li><a href="#categorias"><i class="fas fa-angle-right"></i> Categorias</a></li>
+                    <li><a href="#recursos"><i class="fas fa-angle-right"></i> Recursos</a></li>
+                    <li><a href="#sobre"><i class="fas fa-angle-right"></i> Sobre Nós</a></li>
+                    <li><a href="#contato"><i class="fas fa-angle-right"></i> Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-categories">
+                <h3>Categorias Populares</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Declarações Residenciais</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Contratos de Compra e Venda</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Contratos de Aluguel</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Procurações</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Documentos Trabalhistas</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Entre em Contato</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Av. Principal, 1000, São Paulo, SP</li>
+                    <li><i class="fas fa-phone"></i> (11) 9999-9999</li>
+                    <li><i class="fas fa-envelope"></i> contato@megaadm.com</li>
+                    <li><i class="fas fa-clock"></i> Seg a Sex: 9h às 18h</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 MegaADM. Todos os direitos reservados.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Estilos do Footer */
+    .footer {
+        background-color: var(--dark-color);
+        color: #cbd5e1;
+        padding-top: 5rem;
+    }
+    
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-logo i {
+        color: var(--primary-color);
+        margin-right: 0.5rem;
+    }
+    
+    .footer-logo strong {
+        color: var(--primary-color);
+    }
+    
+    .footer-about p {
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+    
+    .social-links {
+        display: flex;
+        gap: 1rem;
+    }
+    
+    .social-links a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--primary-color);
+        border-radius: 50%;
+        transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+        background-color: var(--primary-color);
+        color: white;
+        transform: translateY(-5px);
+    }
+    
+    .footer h3 {
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.8rem;
+    }
+    
+    .footer h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--primary-color);
+    }
+    
+    .footer ul li {
+        margin-bottom: 1rem;
+    }
+    
+    .footer ul li a {
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+    }
+    
+    .footer ul li a:hover {
+        color: white;
+        padding-left: 5px;
+    }
+    
+    .footer ul li i {
+        margin-right: 0.8rem;
+        color: var(--primary-color);
+    }
+    
+    .footer-contact ul li {
+        display: flex;
+        align-items: flex-start;
+    }
+    
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 0;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .footer-bottom-links {
+        display: flex;
+        gap: 1.5rem;
+    }
+    
+    .footer-bottom-links a {
+        transition: var(--transition);
+    }
+    
+    .footer-bottom-links a:hover {
+        color: white;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .footer-bottom {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+</style>
+
+<!-- JavaScript para funcionalidades -->
+<script>
+    // Toggle do Menu Mobile
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
+    
+    // Animação dos números na seção de estatísticas
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    const animateStats = () => {
+        statNumbers.forEach(stat => {
+            const finalValue = parseInt(stat.getAttribute('data-count'));
+            const duration = 2000; // 2 segundos de duração
+            let startValue = 0;
+            const increment = Math.ceil(finalValue / (duration / 20));
+            
+            const counter = setInterval(() => {
+                startValue += increment;
+                if (startValue > finalValue) {
+                    stat.textContent = finalValue;
+                    clearInterval(counter);
+                } else {
+                    stat.textContent = startValue;
+                }
+            }, 20);
+        });
+    };
+    
+    // Observe quando a seção de estatísticas está visível
+    const statsSection = document.querySelector('.stats');
+    
+    if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(statsSection);
+    }
+    
+    // Smooth scroll para links de navegação
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+                
+                // Fecha o menu mobile se estiver aberto
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            }
+        });
+    });
+</script>
